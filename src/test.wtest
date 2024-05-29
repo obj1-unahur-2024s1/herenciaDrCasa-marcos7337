@@ -1,0 +1,25 @@
+import example.*
+
+const malaria1 = new EnfermedadInfecciosa(celulasAmenazadas = 500)
+const malariaPulenta = new EnfermedadInfecciosa(celulasAmenazadas = 800)
+const otitis1 = new EnfermedadInfecciosa(celulasAmenazadas = 100)
+const lupus1 = new EnfermedadAutoinmune(celulasAmenazadas = 1000)
+
+const logan = new Persona(celulas = 3000000, enfermedades = #{malaria1, otitis1, lupus1})
+const frank = new Persona(celulas = 3500000)
+
+
+test "parte 1" {
+	
+	frank.contraerEnfermedad(malariaPulenta)
+	assert.equals(#{malariaPulenta}, frank.enfermedades())
+	
+	malaria1.reproducirse()
+	assert.equals(1000, malaria1.celulasAmenazadas())
+	
+	logan.pasarDia()
+	assert.equals()
+	
+	assert.that(true)
+
+}
