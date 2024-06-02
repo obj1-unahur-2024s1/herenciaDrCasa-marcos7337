@@ -3,7 +3,7 @@ class Persona {
 	var property temperatura = 36
 	const property enfermedades = #{}
 	
-	method contraerEnfermedad(enfermedad) { if(enfermedades.size() > 5) enfermedades.add(enfermedad) }
+	method contraerEnfermedad(enfermedad) { if(enfermedades.size() < 5) enfermedades.add(enfermedad) }
 	method curarEnfermedad(enfermedad) { enfermedades.remove(enfermedad) }
 	method pasarDia() {
 		enfermedades.forEach({enfermedad => enfermedad.hacerEfecto(self)})
@@ -12,7 +12,7 @@ class Persona {
 		const enfermedadesAgresivas = enfermedades.filter({e => e.esAgresiva(self)})
 		return enfermedadesAgresivas.sum{e => e.celulasAmenazadas()}
 	}
-	method estaEnComa() = (temperatura == 45) or (celulas < 1000000)
+	method estaEnComa() = (temperatura >= 45) or (celulas < 1000000)
 	method recibirMedicamento(cantidad) {
 		enfermedades.forEach{e => e.atenuarse(cantidad * 15)}
 	}

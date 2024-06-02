@@ -9,17 +9,28 @@ const logan = new Persona(celulas = 3000000, enfermedades = #{malaria1, otitis1,
 const frank = new Persona(celulas = 3500000)
 
 
-test "parte 1" {
+test "frank se enferma de una malaria pulenta" {
 	
 	frank.contraerEnfermedad(malariaPulenta)
 	assert.equals(#{malariaPulenta}, frank.enfermedades())
+}
+test "una malaria se reproduce" {
 	
 	malaria1.reproducirse()
 	assert.equals(1000, malaria1.celulasAmenazadas())
+}
+test "logan pasa un día enfermo" {
 	
+	malaria1.reproducirse()
 	logan.pasarDia()
-	assert.equals()
+	assert.equals(2999000, logan.celulas())
+	assert.equals(37.1 ,logan.temperatura())
+}
+test "logan entra en coma" {
 	
-	assert.that(true)
-
+	malaria1.celulasAmenazadas(5000)
+	otitis1.celulasAmenazadas(5000)
+	logan.pasarDia()
+	
+	assert.that(logan.estaEnComa())
 }
